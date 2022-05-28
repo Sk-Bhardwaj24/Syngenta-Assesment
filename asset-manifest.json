@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/Syngenta-Assesment/static/css/main.073c9b0a.css",
+    "main.js": "/Syngenta-Assesment/static/js/main.a44c0878.js",
+    "index.html": "/Syngenta-Assesment/index.html",
+    "main.073c9b0a.css.map": "/Syngenta-Assesment/static/css/main.073c9b0a.css.map",
+    "main.a44c0878.js.map": "/Syngenta-Assesment/static/js/main.a44c0878.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.073c9b0a.css",
+    "static/js/main.a44c0878.js"
+  ]
+}
