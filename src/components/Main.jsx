@@ -58,7 +58,7 @@ const Main = () => {
     if (+inputvalue <= 5 && +inputvalue > 0) {
       let curr = circle.filter((each, idx) => idx === inputvalue - 1);
       let data = circle.filter((each, idx) => idx !== inputvalue - 1);
-      console.log(data);
+      // console.log(data);
       SetCircle(data);
       setBoxdata([...boxdata, ...curr]); //here circle will removed and set into box;
     } else {
@@ -90,8 +90,19 @@ const Main = () => {
     var newarr = [];
     let curr = boxdata.filter((each) => each.id == idp);
     let data = boxdata.filter((each) => each.id !== idp);
+
+    for (let i = 1; i <= 5; i++) {
+      if (i === idp) {
+        newarr.push(...curr);
+      } else {
+        let curdata = circle.filter((each) => each.id === i);
+        console.log(curdata);
+        newarr.push(...curdata);
+      }
+    }
+    console.log(newarr);
+    SetCircle(newarr);
     setBoxdata(data);
-    for (let i = 1; i <= 5; i++) {}
   };
 
   return (
