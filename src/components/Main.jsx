@@ -10,14 +10,22 @@ const Div = styled.div`
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    border: 2px solid black;
+    /* border: 10px solid black; */
+    border-radius: 10px;
     margin: 40px;
+    box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px,
+      rgba(6, 24, 44, 0.65) 0px 4px 6px -1px,
+      rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
   }
   .circle {
     min-width: 300px;
     min-height: 600px;
     margin-left: 5em;
-    border: 1px solid red;
+    border-radius: 10px;
+    /* border: 1px solid red; */
+    box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px,
+      rgba(6, 24, 44, 0.65) 0px 4px 6px -1px,
+      rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
     display: flex;
     flex-direction: column;
   }
@@ -25,9 +33,10 @@ const Div = styled.div`
   .box > div {
     width: 100px;
     min-height: 100px;
-    border: 1px solid red;
+
     border-radius: 50%;
     margin: auto;
+    cursor: pointer;
   }
   .inpt-btn {
     display: flex;
@@ -37,16 +46,32 @@ const Div = styled.div`
   .inpt-btn > input {
     width: 200px;
     height: 40px;
+    box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px,
+      rgba(6, 24, 44, 0.65) 0px 4px 6px -1px,
+      rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+    outline: none;
+  }
+  input:focus,
+  textarea:focus,
+  select:focus {
+    outline: none;
   }
   .btn {
     width: 100px;
     height: 40px;
     margin: 40px;
+    background-color: black;
+    color: white;
+    font-size: bold;
+    border-radius: 10px;
+  }
+  .btn:hover {
+    background-color: purple;
+    cursor: pointer;
   }
 `;
 
 const Main = () => {
-  var arr1 = [];
   var istrue = true;
   const [inputvalue, setInputvalue] = React.useState(""); // it is input controlling
   const [circle, SetCircle] = React.useState([]);
@@ -55,7 +80,7 @@ const Main = () => {
     setInputvalue(e.target.value); // input value controlling function
   };
   const handleshoot = () => {
-    if (+inputvalue <= 5 && +inputvalue > 0) {
+    if (+inputvalue <= circle.length && +inputvalue > 0) {
       let curr = circle.filter((each, idx) => idx === inputvalue - 1);
       let data = circle.filter((each, idx) => idx !== inputvalue - 1);
       // console.log(data);
@@ -68,7 +93,9 @@ const Main = () => {
   React.useEffect(() => {
     if (istrue) {
       var arr = [];
+      // var i = 1;
       for (var i = 1; i <= 5; i++) {
+        // while (circle.length + boxdata.length <= 5) {
         let payload = {
           id: i,
           color:
@@ -81,6 +108,7 @@ const Main = () => {
             ")",
         };
         arr.push(payload);
+        // i++;
       }
       SetCircle(arr);
     } else return;
@@ -88,7 +116,7 @@ const Main = () => {
   // istrue = false;
   const revertCircle = (idp) => {
     var newarr = [];
-    let curr = boxdata.filter((each) => each.id == idp);
+    let curr = boxdata.filter((each) => each.id === idp);
     let data = boxdata.filter((each) => each.id !== idp);
 
     for (let i = 1; i <= 5; i++) {
