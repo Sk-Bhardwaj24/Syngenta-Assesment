@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/Syngenta-Assesment/static/css/main.073c9b0a.css",
-    "main.js": "/Syngenta-Assesment/static/js/main.74fac9e6.js",
+    "main.js": "/Syngenta-Assesment/static/js/main.9989a77e.js",
     "index.html": "/Syngenta-Assesment/index.html",
     "main.073c9b0a.css.map": "/Syngenta-Assesment/static/css/main.073c9b0a.css.map",
-    "main.74fac9e6.js.map": "/Syngenta-Assesment/static/js/main.74fac9e6.js.map"
+    "main.9989a77e.js.map": "/Syngenta-Assesment/static/js/main.9989a77e.js.map"
   },
   "entrypoints": [
     "static/css/main.073c9b0a.css",
-    "static/js/main.74fac9e6.js"
+    "static/js/main.9989a77e.js"
   ]
 }
