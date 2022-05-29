@@ -4,6 +4,7 @@ const Div = styled.div`
   display: flex;
   padding: 40px;
   align-items: center;
+
   background-color: #537895;
   background-image: linear-gradient(315deg, #537895 0%, #09203f 74%);
   .box {
@@ -12,6 +13,7 @@ const Div = styled.div`
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    text-align: center;
     box-sizing: border-box;
     background-color: #eec0c6;
     background-image: linear-gradient(315deg, #eec0c6 0%, #7ee8fa 74%);
@@ -22,6 +24,7 @@ const Div = styled.div`
       rgba(6, 24, 44, 0.65) 0px 4px 6px -1px,
       rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
   }
+
   .circle {
     width: 20vw;
     min-height: 600px;
@@ -136,44 +139,38 @@ const Main = () => {
       return;
     }
   };
+
+  //here 5 circle will  mount to uI(circle) on 1st render;
   React.useEffect(() => {
     var arr = [];
 
-    if (circle.length + boxdata.length < 5) {
-      for (var i = 1; i <= 5; i++) {
-        // checking for ballon we should have only 5 ballon
+    for (var i = 1; i <= 5; i++) {
+      let r = Math.floor(Math.random() * 256);
+      let g = Math.floor(Math.random() * 256); //color generation
+      let b = Math.floor(Math.random() * 256);
 
-        let r = Math.floor(Math.random() * 256);
-        let g = Math.floor(Math.random() * 256);
-        let b = Math.floor(Math.random() * 256);
-        let payload = {
-          id: i,
-          color: `rgba(${r},${g},${b}, .6)`,
-        };
-        arr.push(payload);
+      let payload = {
+        id: i,
+        color: `rgba(${r},${g},${b}, .6)`,
+      };
+      arr.push(payload);
 
-        SetCircle(arr);
-      }
+      SetCircle(arr);
     }
   }, []);
 
+  //this function is used for reverting circle to its orginal position
   const revertCircle = (idp) => {
     var newarr = [];
     let curr = boxdata.filter((each) => each.id === idp);
     let data = boxdata.filter((each) => each.id !== idp);
 
-    for (let i = 1; i <= 5; i++) {
-      if (i === idp) {
-        newarr.push(...curr);
-      } else {
-        let curdata = circle.filter((each) => each.id === i);
-
-        newarr.push(...curdata);
-      }
-    }
+    newarr.push(...curr, ...circle);
+    newarr.sort((a, b) => a.id - b.id);
 
     SetCircle(newarr);
     setBoxdata(data);
+
     if (circle.length < inputvalue - 1) {
       setCurrinput(false);
     } else {
@@ -184,6 +181,9 @@ const Main = () => {
   return (
     <Div>
       <div className="box">
+        <h2>Collection</h2>
+        <br />
+
         {boxdata.map((eachl, idx) => (
           <div
             key={idx}
